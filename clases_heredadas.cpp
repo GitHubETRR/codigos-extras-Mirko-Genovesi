@@ -1,41 +1,45 @@
 #include <iostream>
 #include <string>
+#include<unistd.h>
+#define SECOND 1000000
 using namespace std;
 
-
 class User{
-    private:
+    protected:
         string username;
         int secret_key;
         int ip;
     
     public:
+        User(string u, int sk, int i){
+            username = u;
+            secret_key = sk;
+            ip = i;
+        }
         void play_add(){
             cout << "Playing an add..." << endl;
-            delay(3);
+            usleep(3 * SECOND);
         }
 };
 
-
-class Free_User : public User{
+class Free_User: public User{
     private:
+        Free_User();
         int counter = 0;
     public:
         void play_music(){
-            if (counter % 3){
-                play_add();
-            }
-            else{
+            counter ++;
+            if (counter % 4){
                 play_music();
             }
+            else{
+                play_add();
+            }
             cout << "Playing a song..." << endl;
-            counter++;
-            //poner que si el contador es divisible por 3 llame a play_add()
         }
 };
 
-
-class Premium_User : public User{
+class Premium_User: public User{
     public:
         void play_music(){
             cout << "Playing a song..." << endl;
@@ -44,5 +48,5 @@ class Premium_User : public User{
 
 
 int main(){
-    
+    Premium_User mirko("mirkogenovesi", 32346781095, 1921680112);
 }
