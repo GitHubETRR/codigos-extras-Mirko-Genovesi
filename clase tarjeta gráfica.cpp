@@ -10,11 +10,11 @@ class Graphics_Card{
         float freq; //GHz
 
     public:
-        Graphics_Card(string model, int cuda_cores, int vram, float freq) {
-            this->model = model;
-            this->cuda_cores = cuda_cores;
-            this->vram = vram;
-            this->freq = freq;
+        Graphics_Card(string m, int cc, int vr, float f) {
+            model = m;
+            cuda_cores = cc;
+            vram = vr;
+            freq = f;
         }
         void process_graphics(){
             cout << "Processing Graphics on " << model << endl;
